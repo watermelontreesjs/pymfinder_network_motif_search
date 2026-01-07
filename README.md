@@ -1,6 +1,6 @@
 # pymfinder_network_motif_search
 
-This repository provides an optimized implementation of the **pymfinder** framework, specifically adapted for identifying and statistically analyzing network motifs in cellular interaction networks.
+This repository provides an optimized implementation of the **pymfinder** framework, specifically adapted for identifying network motifs and statistically analyzing its composition.
 
 ## Key Features
 
@@ -30,14 +30,14 @@ pip install numpy pandas
 
 ### 3. Repository Setup
 
-Clone this repository and ensure that `main.py` is located within your project's active working directory.
+Clone this repository and ensure that `main.py` is located within your project's working directory.
 
 
 ## Core Functions
 
 ### *get_motif*
 
-This function performs analysis based on the real observed network. It identifies all unique motif instances and records the identities of the nodes involved in each specific pattern.
+This function performs analysis based on the real observed network. It identifies all unique motif instances and records the identities of the nodes involved.
 
 **Usage:**
 
