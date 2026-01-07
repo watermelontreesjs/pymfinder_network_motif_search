@@ -507,7 +507,7 @@ def get_motif(input_path, output_path, **motif_kwargs):
                 # Extract original node names
                 node_names = [real_results.nodes[nid].id for nid in member_ids]
                 data_list.append([motif_id, str(member_ids), "-".join(node_names)])
-    df = pd.DataFrame(data_list, columns=['MotifID', 'NodeIDs', 'Celltypes'])
+    df = pd.DataFrame(data_list, columns=['MotifID', 'NodeIDs', 'Types'])
     df.to_csv(output_path, index=False)
     print("Get motif complete. Results saved to {0}".format(output_path))
     return real_results
@@ -531,7 +531,7 @@ def motif_random(input_path, output_path, n_randomizations=100, num_cores=40, **
         
     # Flatten and save
     random_data_list = [item for sublist in nested_results for item in sublist]
-    df_rand = pd.DataFrame(random_data_list, columns=['Iteration', 'MotifID', 'NodeIDs', 'Celltypes'])
+    df_rand = pd.DataFrame(random_data_list, columns=['Iteration', 'MotifID', 'NodeIDs', 'Types'])
     df_rand.to_csv(output_path, index=False)
     
     print("Motif randomization complete. Results saved to {0}".format(output_path))
