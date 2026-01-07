@@ -30,7 +30,7 @@ pip install numpy pandas
 
 ### 3. Repository Setup
 
-Clone this repository and ensure that `main.py` is located within your project's working directory.
+Clone this repository and ensure that `main.py` and folder `pymfinder-master` is located within your project's working directory.
 
 
 ## Core Functions
