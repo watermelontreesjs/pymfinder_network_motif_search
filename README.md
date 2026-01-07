@@ -57,7 +57,7 @@ results = get_motif(
 | :--- | :--- |
 | **MotifID** | The unique numerical identifier for the structural motif. The ID is based on the binary integer representation of the motif's adjacency matrix, following the original `mfinder` convention. |
 | **NodeIDs** | A list of internal integer IDs assigned to the nodes forming the motif. |
-| **Types** | A hyphen-separated string of the original node names (e.g., cell types), preserving the structural order. |
+| **Types** | Original node names joined by '-' participating in the motif. |
 
 
 ### *motif_random*
@@ -82,10 +82,10 @@ motif_random(
 **Output CSV Structure:**
 | Column | Description |
 | :--- | :--- |
-| **Iteration** | The index of the randomization run (1 to N). |
+| **Iteration** | The index of the randomization run. |
 | **MotifID** | The unique numerical identifier for the structural motif identified in the randomized network. |
 | **NodeIDs** | A list of internal integer IDs for the nodes forming the motif in the randomized graph. |
-| **Types** | A hyphen-separated string of the original node names involved in the randomized instance. |
+| **Types** | Original node names joined by '-' participating in the motif. |
 
 
 ## Input File Format
