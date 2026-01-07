@@ -4,7 +4,7 @@ This repository provides an optimized implementation of the **pymfinder** framew
 
 ## Key Features
 
-* **Motif Composition Analysis**: Unlike original pymfinder that only provide total counts of motifs, this implementation ouput the specific node identities for each motif instance.
+* **Motif Composition Analysis**: Unlike original pymfinder that only provide total counts of motifs, this implementation output the specific node names for each motif instance.
 * **Parallel Computing Randomization**: Employs `multiprocessing.Pool` for high-performance randomization, significantly reducing the computational time required for large networks across multiple CPU cores.
 
 
