@@ -96,7 +96,6 @@ The input should be a space-separated or tab-separated `.txt` file representing 
 
 ```text
 <source_node> <target_node>
-
 ```
 
 For more detailed configurations (weighted networks, Metropolis algorithms, etc.), please refer to the [pymfinder documentation](https://github.com/stoufferlab/pymfinder/blob/master/documentation/pymfinder_manual.pdf).
