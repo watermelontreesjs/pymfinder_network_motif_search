@@ -16,7 +16,7 @@ Follow the installation instructions for the core **pymfinder** library at the [
 
 ### 2. Environment Setup
 
-The underlying `mfinder` C-extension is best supported in a Python 2.x environment. We recommend using **Conda**:
+The underlying `mfinder` C-extension is based on Python 2.x environment. We recommend using **Conda**:
 
 ```bash
 # Create and activate the environment
