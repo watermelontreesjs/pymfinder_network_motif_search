@@ -1,39 +1,43 @@
 # pymfinder_network_motif_search
 
+This repository provides an optimized implementation of the **pymfinder** framework, specifically adapted for identifying and statistically analyzing network motifs in cellular interaction networks.
 
-This repository provides a specialized implementation of the **pymfinder** framework, adapted for identifying and statistically analyzing motifs.
+## Key Features
+
+* **Motif Composition Analysis**: Unlike standard tools that only provide total counts, this implementation records the specific node identities for every motif instance.
+* **Parallel Computing Randomization**: Employs Python's `multiprocessing.Pool` for high-performance randomization, significantly reducing the computational time required for large networks across multiple CPU cores.
+
 
 ## Installation
 
 ### 1. Prerequisites
 
-First, follow the installation instructions for the core **pymfinder** library at the [pymfinder official repository](https://github.com/stoufferlab/pymfinder).
+Follow the installation instructions for the core **pymfinder** library at the [official pymfinder repository](https://github.com/stoufferlab/pymfinder).
 
 ### 2. Environment Setup
 
-We recommend using a conda environment with python2.x.
+The underlying `mfinder` C-extension is best supported in a Python 2.x environment. We recommend using **Conda**:
 
 ```bash
 # Create and activate the environment
-conda create -n pymfinder_network_motif_search python=2.7
-conda activate pymfinder_network_motif_search
+conda create -n pymfinder_motif python=2.7
+conda activate pymfinder_motif
 
-# Install dependencies
+# Install required dependencies
 pip install numpy pandas
 
 ```
 
 ### 3. Repository Setup
 
-Clone this repository and ensure `main.py` is located in your project's working directory.
+Clone this repository and ensure that `main.py` is located within your project's active working directory.
 
----
 
 ## Core Functions
 
-### `get_motif`
+### *get_motif*
 
-This function analyzes the **real observed network** and identifies all unique motif instances. It records the node names participating in each motif.
+This function performs analysis based on the real observed network. It identifies all unique motif instances and records the identities of the nodes involved in each specific pattern.
 
 **Usage:**
 
@@ -41,7 +45,7 @@ This function analyzes the **real observed network** and identifies all unique m
 from main import get_motif
 
 results = get_motif(
-    input_path="spatial_network.txt", 
+    input_path="network.txt", 
     output_path="real_participation.csv", 
     motifsize=3
 )
@@ -51,15 +55,14 @@ results = get_motif(
 **Output CSV Structure:**
 | Column | Description |
 | :--- | :--- |
-| **MotifID** | The unique numerical identifier for the structural motif (The id is based on the representation of the adjacency matrix of the motif as a binary integer, following the original mfinder). |
-| **NodeIDs** | A list of internal integer IDs for the nodes forming the motif. |
-| **Types** | A string of the original node names. |
+| **MotifID** | The unique numerical identifier for the structural motif. The ID is based on the binary integer representation of the motif's adjacency matrix, following the original `mfinder` convention. |
+| **NodeIDs** | A list of internal integer IDs assigned to the nodes forming the motif. |
+| **Types** | A hyphen-separated string of the original node names (e.g., cell types), preserving the structural order. |
 
----
 
-### `motif_random`
+### *motif_random*
 
-This function generates a **null model** by creating multiple randomized versions of your network (preserving the degree distribution). It uses parallel processing to quantify how often motifs occur by chance.
+This function generates a null model by creating multiple randomized versions of the network while preserving the degree distribution. It utilizes parallel processing to quantify how frequently specific motifs occur by chance.
 
 **Usage:**
 
@@ -67,7 +70,7 @@ This function generates a **null model** by creating multiple randomized version
 from main import motif_random
 
 motif_random(
-    input_path="spatial_network.txt", 
+    input_path="network.txt", 
     output_path="random_participation.csv", 
     n_randomizations=100, 
     num_cores=40, 
@@ -79,16 +82,15 @@ motif_random(
 **Output CSV Structure:**
 | Column | Description |
 | :--- | :--- |
-| **Iteration** | The index of the randomization run. |
-| **MotifID** | The unique numerical identifier for the structural motif (The id is based on the representation of the adjacency matrix of the motif as a binary integer, following the original mfinder). |
-| **NodeIDs** | A list of internal integer IDs for the nodes forming the motif. |
-| **Types** | A string of the original node names. |
+| **Iteration** | The index of the randomization run (1 to N). |
+| **MotifID** | The unique numerical identifier for the structural motif identified in the randomized network. |
+| **NodeIDs** | A list of internal integer IDs for the nodes forming the motif in the randomized graph. |
+| **Types** | A hyphen-separated string of the original node names involved in the randomized instance. |
 
----
 
 ## Input File Format
 
-The input should be a space-separated or tab-separated `.txt` file representing an **edge list**. Node names should not contain spaces.
+The input should be a space-separated or tab-separated `.txt` file representing an **edge list**. Node names must not contain spaces.
 
 **Format:**
 
@@ -97,11 +99,6 @@ The input should be a space-separated or tab-separated `.txt` file representing 
 
 ```
 
-
-For more details configurations (weighted networks, metropolis algorithms, etc.), please refer to the [pymfinder](https://github.com/stoufferlab/pymfinder/blob/master/documentation/pymfinder_manual.pdf).
+For more detailed configurations (weighted networks, Metropolis algorithms, etc.), please refer to the [pymfinder manual](https://github.com/stoufferlab/pymfinder/blob/master/documentation/pymfinder_manual.pdf).
 
 ---
-
-## Modified Functions
-* **Motif compostion analysis**: 
-* **Parallel Computing randomization**: Utilizes Python's `multiprocessing.Pool` for high-performance randomization.
