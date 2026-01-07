@@ -90,7 +90,7 @@ motif_random(
 
 ## Input File Format
 
-The input should be a space-separated or tab-separated `.txt` file representing an **edge list**. Node names must not contain spaces.
+The input should be a space-separated `.txt` file representing an **edge list**. Node names must not contain spaces.
 
 **Format:**
 
